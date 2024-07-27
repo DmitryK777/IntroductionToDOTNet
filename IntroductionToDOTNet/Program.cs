@@ -1,4 +1,4 @@
-﻿//#define CONSOLE_PARAMETERS
+﻿#define CONSOLE_PARAMETERS
 //#define INPUT_DATA
 using System;
 using System.Collections.Generic;
