@@ -20,6 +20,12 @@ namespace MoveSquare
 			Console.BackgroundColor = ConsoleColor.Magenta;
 		}
 
+		static void change_cursor_position(int position_X, int position_Y)
+		{
+			Console.SetCursorPosition(position_X, position_Y);
+			Console.WriteLine("  ");
+		}
+
 		static void Main(string[] args)
 		{
 			const char forword = (char)119;
@@ -80,8 +86,7 @@ namespace MoveSquare
 						if (position_Y > Y_MIN) 
 						{
 							reset_screen();
-							Console.SetCursorPosition(position_X, --position_Y);
-							Console.WriteLine("  ");
+							change_cursor_position(position_X, --position_Y);
 						}
 						break;
 
@@ -89,16 +94,14 @@ namespace MoveSquare
 						if (position_Y < Y_MAX)
 						{
 							reset_screen();
-							Console.SetCursorPosition(position_X, ++position_Y);
-							Console.WriteLine("  ");
+							change_cursor_position(position_X, ++position_Y);
 						}
 					    break;
 
 					case left: case LEFT: case ru_left: case RU_LEFT: case leftArrow: if (position_X > X_MIN)
 						{
 							reset_screen();
-							Console.SetCursorPosition(--position_X, position_Y);
-							Console.WriteLine("  ");
+							change_cursor_position(--position_X, position_Y);
 						}
 						break;
 
@@ -106,8 +109,7 @@ namespace MoveSquare
 						if (position_X < X_MAX)
 						{
 							reset_screen();
-							Console.SetCursorPosition(++position_X, position_Y);
-							Console.WriteLine("  ");
+							change_cursor_position(++position_X, position_Y);
 						}
 						break;
 										
