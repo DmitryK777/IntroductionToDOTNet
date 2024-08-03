@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EAC86E3C-E8EE-45BE-BC28-AEC4B74ED2A3}</ProjectGuid>
+    <ProjectGuid>{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IntroductionToDOTNet</RootNamespace>
-    <AssemblyName>IntroductionToDOTNet</AssemblyName>
+    <RootNamespace>Calc</RootNamespace>
+    <AssemblyName>Calc</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

@@ -29,6 +29,9 @@ namespace Calculator
 
 			Console.WriteLine($"Результат вычисления: {result}");
             Console.WriteLine();
+
+
+
         }
 	}
 }

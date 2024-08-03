@@ -117,11 +117,11 @@ namespace MoveSquare
 						Console.ResetColor();
 						Console.WriteLine("Exit");
 						break;
-					/*
+					
 					default:
 						Console.ResetColor();
-						Console.WriteLine("ERROR"); 
-					*/
+						Console.WriteLine("ERROR");
+						break;
 				}
 			} while (instruction != ESCAPE);
 

@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveSquare", "MoveSquare\MoveSquare.csproj", "{17918FD6-193C-4EA3-A161-43987CC9FA88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factorial", "Factorial\Factorial.csproj", "{E8F3AE5C-5335-4BCC-83E7-4B7716C9AD3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "Calc\Calc.csproj", "{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{17918FD6-193C-4EA3-A161-43987CC9FA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17918FD6-193C-4EA3-A161-43987CC9FA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17918FD6-193C-4EA3-A161-43987CC9FA88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F3AE5C-5335-4BCC-83E7-4B7716C9AD3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F3AE5C-5335-4BCC-83E7-4B7716C9AD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F3AE5C-5335-4BCC-83E7-4B7716C9AD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F3AE5C-5335-4BCC-83E7-4B7716C9AD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
