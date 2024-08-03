@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factorial", "Factorial\Fact
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "Calc\Calc.csproj", "{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexCalculator", "ComplexCalculator\ComplexCalculator.csproj", "{3B5A2FC3-0694-4421-9355-E43D8603572E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexCalculatorWithBrackets", "ComplexCalculatorWithBrackets\ComplexCalculatorWithBrackets.csproj", "{986BBE2D-03E8-4A6B-B139-614C3EA0A052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F296D68-AFD1-4D74-AABF-E5617FBF80FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B5A2FC3-0694-4421-9355-E43D8603572E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5A2FC3-0694-4421-9355-E43D8603572E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5A2FC3-0694-4421-9355-E43D8603572E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5A2FC3-0694-4421-9355-E43D8603572E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986BBE2D-03E8-4A6B-B139-614C3EA0A052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986BBE2D-03E8-4A6B-B139-614C3EA0A052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986BBE2D-03E8-4A6B-B139-614C3EA0A052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986BBE2D-03E8-4A6B-B139-614C3EA0A052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
