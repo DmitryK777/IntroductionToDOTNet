@@ -14,29 +14,66 @@ namespace Calc2
 		{
             Console.Write("Введите арифметическое выражение: ");
 			//expression = Console.ReadLine();
-			expression = "22+33*44-55/11";
-			Console.WriteLine(expression);
+			expression = "(22+33)*(77*(55-50))/11";
+			Explore(expression);
+			Console.WriteLine(Calculate(expression));
+		}
 
+		static void Explore(string expression)
+		{
+			
+			for (int i = 0; i < expression.Length; i++)
+			{
+				if (expression[i] == '(')
+				{
+					for (int j = i + 1; j < expression.Length; j++)
+					{
+						if (expression[j] == ')')
+						{
+							expression = expression.Replace
+								(
+								expression.Substring(i, j-i+1), 
+								Calculate(expression.Substring(i+1, j-i-1)).ToString()
+								);
+							Program.expression = expression;
+							break;
+						}
+						if (expression[j] == '(')
+						{
+							Explore(expression.Substring(j));
+							//Program.expression = expression;
+						}
+					}
+				}
+			}
+
+			
+		}
+
+		static double Calculate(string expression)
+		{
+			Console.WriteLine(expression);
 			char[] delimiters = new char[] { '+', '-', '*', '/' };
 
 			string[] s_numbers = expression.Split(delimiters);
-			Print(s_numbers);
-            
+			for (int i = 0; i < s_numbers.Length; i++) Console.Write(s_numbers[i] + "\t");
+			Console.WriteLine();
+
 
 			double[] numbers = new double[s_numbers.Length];
 			for (int i = 0; i < numbers.Length; i++)
 			{
 				numbers[i] = Convert.ToDouble(s_numbers[i]);
-                Console.Write(numbers[i] + "\t");
-            }
-            Console.WriteLine();
+				Console.Write(numbers[i] + "\t");
+			}
+			Console.WriteLine();
 
-			string[] operators =  expression.Split('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.');
+			string[] operators = expression.Split('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.');
 			for (int i = 0; i < operators.Length; i++) Console.Write(operators[i] + "\t");
-            Console.WriteLine();
-            operators = operators.Where(val => val != "").ToArray();
+			Console.WriteLine();
+			operators = operators.Where(val => val != "").ToArray();
 			for (int i = 0; i < operators.Length; i++) Console.Write(operators[i] + "\t");
-            Console.WriteLine();
+			Console.WriteLine();
 
 
 			////////////////////////////////////////////////
@@ -49,7 +86,7 @@ namespace Calc2
 					ShiftLeft(numbers, i + 1);
 					ShiftLeft(operators, i);
 				}
-				
+
 			}
 			Print(numbers);
 			Print(operators);
@@ -68,6 +105,8 @@ namespace Calc2
 			}
 			Print(numbers);
 			Print(operators);
+
+			return numbers[0];
 		}
 
 		static void Print(double[] arr)
@@ -101,5 +140,6 @@ namespace Calc2
 			arr[arr.Length - 1] = null;
 			return arr;
 		}
+		
 	}
 }
