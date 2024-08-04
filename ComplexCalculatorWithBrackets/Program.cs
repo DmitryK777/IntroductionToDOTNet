@@ -47,20 +47,22 @@ namespace ComplexCalculatorWithBrackets
                         expression = expression.Insert(open_bracket_position, new_substring);
 						*/
 
-						expression = expression.Replace(expression.Substring(open_bracket_position, close_bracket_position - open_bracket_position + 1), Convert.ToString(arrange_expression(expression.Substring(open_bracket_position + 1, close_bracket_position - open_bracket_position - 1))));
+						expression = expression.Replace(
+							expression.Substring(open_bracket_position, close_bracket_position - open_bracket_position + 1), Convert.ToString(arrange_expression(
+							expression.Substring(open_bracket_position + 1, close_bracket_position - open_bracket_position - 1))));
 
 						break;
 					}
 					else
 					{
-                        Console.WriteLine("Ошибка: нет открывающей скобки");
+						Console.WriteLine("Ошибка: нет открывающей скобки");
 						return 0;
-					} 
+					}
 				}
 			}
 			if (is_open_bracket && !is_close_bracket)
 			{
-                Console.WriteLine("Ошибка: нет закрывающей скобки");
+				Console.WriteLine("Ошибка: нет закрывающей скобки");
 				return 0;
 			}
 
@@ -109,9 +111,9 @@ namespace ComplexCalculatorWithBrackets
 					operands[i] = operands[i] / operands[i + 1];
 					operands[i + 1] = 0;
 				}
-			}
-			for (int i = 0; i < operators.Length; i++)
-			{
+				//}
+				//for (int i = 0; i < operators.Length; i++)
+				//{
 				if (operators[i] == '*')
 				{
 					operands[i] = operands[i] * operands[i + 1];
@@ -124,7 +126,7 @@ namespace ComplexCalculatorWithBrackets
 			for (int i = 0; i < operators.Length; i++)
 			{
 				if (operators[i] == '+') result += operands[i + 1];
-				else if (operators[i] == '-') result -= operands[i + 1];
+				if (operators[i] == '-') result -= operands[i + 1];
 			}
 
 			return result;
