@@ -21,7 +21,7 @@ namespace Calc2
 
 		static void Explore(string expression)
 		{
-			
+			/*
 			for (int i = 0; i < expression.Length; i++)
 			{
 				if (expression[i] == '(')
@@ -46,8 +46,55 @@ namespace Calc2
 					}
 				}
 			}
+			*/
 
-			
+			bool is_open_bracket = false;
+			int open_bracket_position = -1;
+
+			bool is_close_bracket = false;
+			int close_bracket_position = -1;
+
+			for (int i = 0; i < expression.Length; i++)
+			{
+				if (expression[i] == '(')
+				{
+					is_open_bracket = true;
+					open_bracket_position = i;
+				}
+
+				if (expression[i] == ')')
+				{
+					if (is_open_bracket)
+					{
+						is_close_bracket = true;
+						close_bracket_position = i;
+						expression = expression.Replace
+								(
+								expression.Substring(open_bracket_position, close_bracket_position - open_bracket_position + 1),
+								Calculate(expression.Substring(open_bracket_position + 1, close_bracket_position - open_bracket_position - 1)).ToString()
+								);
+						Program.expression = expression;
+						break;
+					}
+					else
+					{
+						Console.WriteLine("Ошибка: нет открывающей скобки");
+					}
+				}
+			}
+
+			if (is_open_bracket && !is_close_bracket)
+			{
+				Console.WriteLine("Ошибка: нет закрывающей скобки");
+			}
+
+			for (int i = 0; i < expression.Length; i++)
+			{
+				if (expression[i] == '(')
+				{
+					Explore(expression);
+				}
+			}
 		}
 
 		static double Calculate(string expression)
