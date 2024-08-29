@@ -1,6 +1,8 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +25,8 @@ namespace Fraction
 
 		public Fraction()
 		{
+			Integer = 0;
+			Numerator = 0;
 			Denominator = 1;
             Console.WriteLine($"DefaultConstructor:\t {this.GetHashCode()}");
         }
@@ -30,12 +34,24 @@ namespace Fraction
 		public Fraction(int integer)
 		{
 			Integer = integer;
+			Numerator = 0;
 			Denominator = 1;
 			Console.WriteLine($"ConstructorOfInteger:\t {this.GetHashCode()}");
 		}
 
+		public Fraction(double number)
+		{
+			number += 1e-10;
+			Integer = (int)number;
+			Denominator = (int)1e+9;
+			number -= Integer;
+			Numerator = (int)(number * Denominator);
+			Reduce();
+		}
+
 		public Fraction(int numerator, int denominator)
 		{
+			Integer = 0;
 			Numerator = numerator;
 			Denominator = denominator;
 			Console.WriteLine($"ConstructorOfWithoutInteger:\t {this.GetHashCode()}");
@@ -63,7 +79,7 @@ namespace Fraction
 		}
 
 		// Arithmetical Operators
-		public static Fraction operator*(Fraction left, Fraction right)
+		public static Fraction operator *(Fraction left, Fraction right)
 		{
 			/*
 			Fraction left_copy = new Fraction(left);
@@ -87,9 +103,101 @@ namespace Fraction
 				);
 		}
 
-		public static Fraction operator/(Fraction left, Fraction right)
+		public static Fraction operator /(Fraction left, Fraction right)
 		{ 
 			return left * right.Inverted();
+		}
+
+		public static Fraction operator +(Fraction left, Fraction right)
+		{
+			return new Fraction
+				(
+					left.ToImproper().Numerator * right.ToImproper().Denominator + left.ToImproper().Denominator * right.ToImproper().Numerator,
+					left.ToImproper().Denominator * right.ToImproper().Denominator
+				).ToProper().Reduce();
+		}
+
+		public static Fraction operator -(Fraction left, Fraction right)
+		{
+			return new Fraction
+				(
+					left.ToImproper().Numerator * right.ToImproper().Denominator - left.ToImproper().Denominator * right.ToImproper().Numerator,
+					left.ToImproper().Denominator * right.ToImproper().Denominator
+				).ToProper().Reduce();
+		}
+
+		public static Fraction operator ++(Fraction fraction)
+		{
+			
+			if (fraction.Integer == 0 && fraction.Numerator < 0)
+			{
+				return new Fraction
+					(
+					fraction.Numerator + fraction.Denominator,
+					fraction.Denominator
+					);
+			}
+			else
+			{
+				return new Fraction
+				(
+					fraction.Integer++,
+					fraction.Numerator,
+					fraction.Denominator
+				);
+			}
+			
+
+			/*
+			Fraction result = fraction.ToProper();
+			if (result.Integer == 0 && result.Numerator < 0)
+			{
+				result.Numerator += result.Denominator;
+			}
+			else
+			{
+				result.Integer++;
+			}
+
+			return result;
+			*/
+		}
+
+		public static Fraction operator --(Fraction fraction)
+		{
+			
+			if (fraction.Integer == 0)
+			{
+				return new Fraction
+					(
+					fraction.Numerator - fraction.Denominator,
+					fraction.Denominator
+					);
+			}
+			else
+			{
+				return new Fraction
+					(
+					fraction.Integer--,
+					fraction.Numerator,
+					fraction.Denominator
+					);
+			}
+			
+
+			/*
+			Fraction result = fraction.ToProper();
+			if (result.Integer == 0)
+			{
+				result.Numerator -= result.Denominator;
+			}
+			else
+			{
+				result.Integer--;
+			}
+
+			return result;
+			*/
 		}
 
 		// Comparison Operators
@@ -102,6 +210,25 @@ namespace Fraction
 			return !(left == right);
 		}
 
+		public static bool operator >(Fraction left, Fraction right)
+		{
+			return left.ToImproper().Numerator * right.ToImproper().Denominator > right.ToImproper().Numerator * left.ToImproper().Denominator;
+		}
+
+		public static bool operator <(Fraction left, Fraction right)
+		{
+			return left.ToImproper().Numerator * right.ToImproper().Denominator < right.ToImproper().Numerator * left.ToImproper().Denominator;
+		}
+
+		public static bool operator >=(Fraction left, Fraction right)
+		{
+			return !(left < right);
+		}
+
+		public static bool operator <=(Fraction left, Fraction right)
+		{
+			return !(left > right);
+		}
 
 		// Methods
 		public Fraction ToProper()
@@ -111,7 +238,7 @@ namespace Fraction
 			//return this;
 			Fraction proper = new Fraction();
 			proper.Integer += Numerator / Denominator;
-			proper.Numerator = Numerator % Denominator;
+			proper.Numerator = Math.Abs(Numerator % Denominator);
 			proper.Denominator = Denominator;
 			return proper;
 		}
@@ -131,6 +258,23 @@ namespace Fraction
 			
 			return inverted;
 		}
+
+		public Fraction Reduce()
+		{
+			int more, less, rest;
+			if (Math.Abs(Numerator) > Math.Abs(Denominator)) { more = Math.Abs(Numerator); less = Math.Abs(denominator); }
+            else { more = Math.Abs(Denominator); less = Math.Abs(Numerator); }
+			do
+			{
+				rest = more % less;
+				more = less;
+				less = rest;
+			} while (rest != 0);
+			int GCD = more; // Greatest Common Divisior
+			Numerator /= GCD;
+			Denominator /= GCD;
+			return this;
+        }
 
 		public void Print()
 		{

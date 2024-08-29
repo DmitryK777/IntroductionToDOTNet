@@ -1,6 +1,7 @@
 ﻿//#define CONSTRUCTORS_CHECK
 //#define ARITHMETICAL_OPERATORS
-#define COMPARISION_OPERATORS
+//#define COMPARISION_OPERATORS
+#define HOME_WORK
 
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,27 @@ namespace Fraction
             Console.WriteLine(new Fraction(1, 2) == new Fraction(5, 10));
 #endif
 
-        }
+#if HOME_WORK
+			Fraction A = new Fraction(2, 2, 7);
+			Fraction B = new Fraction(5, 3, 4);
+			Fraction C = new Fraction(A - B);
+			Fraction D = new Fraction(B - A);
+
+			C.Print();
+			D.Print();
+
+			Fraction I = new Fraction(2.75);
+			I.Print();
+
+			Console.WriteLine(I > A);
+			Console.WriteLine(I > B);
+
+			Fraction J = new Fraction(3, 2, 9);
+			J--.Print();
+#endif
+
+
+
+		}
 	}
 }
