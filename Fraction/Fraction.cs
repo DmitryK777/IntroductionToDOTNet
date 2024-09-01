@@ -140,9 +140,14 @@ namespace Fraction
 
 		public static Fraction operator --(Fraction fraction)
 		{
-			if (fraction.Integer == 0)
+			if (fraction.Integer == 0 && fraction.Numerator > 0)
 			{
 				fraction.Numerator -= fraction.Denominator;
+			}
+			else if (fraction.Integer == 0 && fraction.Numerator < 0)
+			{
+				fraction.Integer--;
+				fraction.Numerator *= -1;
 			}
 			else fraction.Integer--;
 
