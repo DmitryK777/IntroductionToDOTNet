@@ -128,76 +128,25 @@ namespace Fraction
 
 		public static Fraction operator ++(Fraction fraction)
 		{
-			
+
 			if (fraction.Integer == 0 && fraction.Numerator < 0)
 			{
-				return new Fraction
-					(
-					fraction.Numerator + fraction.Denominator,
-					fraction.Denominator
-					);
+				fraction.Numerator += fraction.Denominator;
 			}
-			else
-			{
-				return new Fraction
-				(
-					fraction.Integer++,
-					fraction.Numerator,
-					fraction.Denominator
-				);
-			}
-			
+			else fraction.Integer++;
 
-			/*
-			Fraction result = fraction.ToProper();
-			if (result.Integer == 0 && result.Numerator < 0)
-			{
-				result.Numerator += result.Denominator;
-			}
-			else
-			{
-				result.Integer++;
-			}
-
-			return result;
-			*/
+			return fraction;
 		}
 
 		public static Fraction operator --(Fraction fraction)
 		{
-			
 			if (fraction.Integer == 0)
 			{
-				return new Fraction
-					(
-					fraction.Numerator - fraction.Denominator,
-					fraction.Denominator
-					);
+				fraction.Numerator -= fraction.Denominator;
 			}
-			else
-			{
-				return new Fraction
-					(
-					fraction.Integer--,
-					fraction.Numerator,
-					fraction.Denominator
-					);
-			}
-			
+			else fraction.Integer--;
 
-			/*
-			Fraction result = fraction.ToProper();
-			if (result.Integer == 0)
-			{
-				result.Numerator -= result.Denominator;
-			}
-			else
-			{
-				result.Integer--;
-			}
-
-			return result;
-			*/
+			return fraction;
 		}
 
 		// Comparison Operators

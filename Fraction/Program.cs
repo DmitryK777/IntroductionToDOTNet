@@ -59,8 +59,8 @@ namespace Fraction
 			Console.WriteLine(I > A);
 			Console.WriteLine(I > B);
 
-			Fraction J = new Fraction(3, 2, 9);
-			J--.Print();
+			Fraction J = new Fraction(2, 9);
+			J++.Print();
 #endif
 
 
